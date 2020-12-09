@@ -1,10 +1,16 @@
 from tkinter import *
-
+import os
+from pathlib import Path
+#globals declarations 
+local_site = str(Path.home())
+local_site_files = list(os.listdir(local_site))
+print('Local files: ', local_site_files)
+remote_site = 'REMOTE SITE'
 root = Tk()
 #set title
 root.title("FTP Client")
 #set default size of screen
-root.geometry('700x400')
+root.geometry('905x805')
 #create label for upper entries
 entries_frame = LabelFrame(root, padx=10, pady=10)
 entries_frame.grid(row=0, column=0, padx=10, pady=10, columnspan=6)
@@ -33,9 +39,109 @@ local_site_label.grid(row=2,column=0)
 #local site frame
 local_site_frame = LabelFrame(root, padx=30, pady=70)
 local_site_frame.grid(row=3, column=0)
+#variable to store last index file
+last_indx_file = ''
+#function to handle moving upwards in the frame
+#where value is the last index
+def _up(value):
+    value += 1
+    new_row_count = 0
+    try:
+        #first clear the already existing button
+        #for widget in local_site_frame.winfo_children():
+            # local_site_frame.grid_forget()
+        #to destroy the widgets
+        for widget in local_site_frame.winfo_children():
+            widget.destroy()
+        # for i in range(5):
+        print('Value: ', value, 'New List: ', local_site_files[value:value+5])
+        for file in list(local_site_files[value:value+5]):
+            Button(local_site_frame, text=file).grid(row=new_row_count)
+            new_row_count +=1
+            if list(local_site_files[value:value+5]).index(file) == 4:
+                last_indx_file = file[:]
+                print('Last file in group: ', last_indx_file)
+        up_button = Button(local_site_frame,text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)            
+        down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(last_indx_file))).grid(row=7,column=0)
+    except IndexError:
+        #first clear the already existing button
+        #for widget in local_site_frame.winfo_children():
+            # local_site_frame.grid_forget()
+        #to destroy the widgets
+        for widget in local_site_frame.winfo_children():
+            widget.destroy()
+        # for i in range(len(local_site_files[value:])):
+        for file in local_site_files[value:]:
+            if file == str(list(local_site_files[value:][-1])):
+                last_indx_file == file[:]
+            Button(local_site_frame, text=file).grid(row=new_row_count)
+        up_button = Button(local_site_frame,text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)
+        down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(first_indx_file))).grid(row=7,column=0)
+#function to handle moving downwards in the frame
+#where value is the first index
+first_indx_file = ''
+def _down(value):
+    try:
+        #first clear the already existing button
+        #for widget in local_site_frame.winfo_children():
+            # local_site_frame.grid_forget()
+        #to destroy the widgets
+        for widget in local_site_frame.winfo_children():
+            widget.destroy()
+        #variable for new row count
+        new_row_count = 0
+        #value refers to index
+        #firt rever the list
+        try:
+            retrieved_slice_of_original_local_files = local_site_files[value:value+5]
+        except IndexError:
+            retrieved_slice_of_original_local_files = local_site_files[value:]
+        new_reverse_local_files_list = [i for i in retrieved_slice_of_original_local_files[::-1]]
+        neg_index_of_value = -(value)
+        print('New reversed local files', new_reverse_local_files_list, 'New negative index of the value: ', neg_index_of_value)
+        #assigning first_file_indx her
+        #todo: find bug and uncomment
+        # first_file_indx = new_reverse_local_files_list[neg_index_of_value]
+        # print('First file: ', first_file_indx)
+        #while the new list len is greater than 5 do this
+        # tmp = neg_index_of_value-1
+        # new_list = new_reverse_local_files_list[tmp:tmp-5]
+        if len(new_reverse_local_files_list) >=5:
+            for file in [i for i in new_reverse_local_files_list[::-1]]:
+                Button(local_site_frame, text=file).grid(row=new_row_count)
+                new_row_count += 1
+            up_button = Button(local_site_frame, text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)
+            down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(last_indx_file))).grid(row=7,column=0)
+        else:
+            for file in [i for i in new_reverse_local_files_list[::-1]]:
+                Button(local_site_frame, text=file).grid()
+            up_button = Button(local_site_frame, text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)
+            down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(last_indx_file))).grid(row=7,column=0)    
+            
+    except IndexError:
+        #first clear the already existing button
+        #for widget in local_site_frame.winfo_children():
+            # local_site_frame.grid_forget()
+        #to destroy the widgets
+        for widget in local_site_frame.winfo_children():
+            widget.destroy()
+        print(e)
 #create list of files in local site
-testListLabel = Label(local_site_frame, text="this is a test local file label")
-testListLabel.grid(row=0, column=0, padx=50,pady=60)
+if len(local_site_files) <=5:
+    for file in local_site_files:
+        Button(local_site_frame, text=file).grid(row=local_site_files.index(file))
+else:
+    for file in local_site_files[:5]:
+        if local_site_files.index(file) == 4:
+            last_indx_file = file[:]
+            print('Last file in group: ', last_indx_file)
+        Button(local_site_frame, text=file).grid(row=local_site_files.index(file))
+#empty label to create space between list of local files and buttons
+Label(local_site_frame).grid(row=6)
+if not len(local_site_files) <=5:
+    #create down and up buttons
+    down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(first_indx_file))).grid(row=7,column=0)
+    up_button = Button(local_site_frame,text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)
 #create remote site label
 remote_site_label = Label(root, text='Remote site', padx=5, pady=5)
 remote_site_label.grid(row=2, column=3)
