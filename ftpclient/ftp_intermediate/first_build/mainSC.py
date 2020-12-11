@@ -1,11 +1,8 @@
-import tkinter as tk
 from tkinter import *
-import tkinter.scrolledtext as st
 import os
 from pathlib import Path
 import sys
 sys.path.append(os.getcwd())
-import helpers
 #globals declarations
 local_site = str(Path.home())
 local_site_files = list(os.listdir(local_site))

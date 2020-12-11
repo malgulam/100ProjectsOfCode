@@ -41,6 +41,34 @@ local_site_frame = LabelFrame(root, padx=30, pady=70)
 local_site_frame.grid(row=3, column=0)
 #variable to store last index file
 last_indx_file = ''
+#variable to store last index subdirectory/item
+last_indx_sub = ''
+#function to retrieve subdirs and files in a given dir
+#do not take the name 'file' literally.I got this far with it.Will refactor
+def view_folder_content(file):
+    path = f'{Path.home()}/{file}'
+    print('Path: ', path)
+    # os.chdir(path)
+    subs_ = list(os.listdir(path))
+    print('Subs: ', subs_)
+    #if the len of sub directories and items is less than or equal to 5 jus
+    #view it on the screen
+    if len(subs_) <=5:
+        for item in subs_:
+            Button(local_files_frame, text=item).grid(row=subs_.index(item))
+    else:
+        for item in subs_[:5]:
+            if subs_.index(item) == 4:
+                last_indx_sub = item[:]
+                print('Last sub in group: ', last_indx_sub)
+            Button(local_files_frame, text=item).grid(row=subs_.index(item))
+    #empty label to create space between lisr of local files and buttons
+    Label(local_files_frame).grid(row=6)
+    if not len(subs_) <= 5:
+        #create down and up buttons
+        down_button = Button(local_files_frame, text="Down").grid(row=7, column=0)
+        down_button = Button(local_files_frame, text="Up").grid(row=7, column=1)
+    os.chdir(str(Path.home()))
 #function to handle moving upwards in the frame
 #where value is the last index
 def _up(value):
@@ -56,11 +84,12 @@ def _up(value):
         # for i in range(5):
         print('Value: ', value, 'New List: ', local_site_files[value:value+5])
         for file in list(local_site_files[value:value+5]):
-            Button(local_site_frame, text=file).grid(row=new_row_count)
-            new_row_count +=1
+
             if list(local_site_files[value:value+5]).index(file) == 4:
                 last_indx_file = file[:]
                 print('Last file in group: ', last_indx_file)
+            Button(local_site_frame, text=file, command=lambda: view_folder_content(file)).grid(row=new_row_count)
+            new_row_count += 1
         up_button = Button(local_site_frame,text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)            
         down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(last_indx_file))).grid(row=7,column=0)
     except IndexError:
@@ -108,13 +137,13 @@ def _down(value):
         # new_list = new_reverse_local_files_list[tmp:tmp-5]
         if len(new_reverse_local_files_list) >=5:
             for file in [i for i in new_reverse_local_files_list[::-1]]:
-                Button(local_site_frame, text=file).grid(row=new_row_count)
+                Button(local_site_frame, text=file, command=lambda:view_folder_content(file)).grid(row=new_row_count)
                 new_row_count += 1
             up_button = Button(local_site_frame, text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)
             down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(last_indx_file))).grid(row=7,column=0)
         else:
             for file in [i for i in new_reverse_local_files_list[::-1]]:
-                Button(local_site_frame, text=file).grid()
+                Button(local_site_frame, text=file, command=lambda:view_folder_content(file)).grid()
             up_button = Button(local_site_frame, text="Up", command=lambda:_up(value=local_site_files.index(last_indx_file))).grid(row=7,column=1)
             down_button = Button(local_site_frame,text="Down", command=lambda:_down(value=local_site_files.index(last_indx_file))).grid(row=7,column=0)    
             
@@ -129,13 +158,13 @@ def _down(value):
 #create list of files in local site
 if len(local_site_files) <=5:
     for file in local_site_files:
-        Button(local_site_frame, text=file).grid(row=local_site_files.index(file))
+        Button(local_site_frame, text=file, command=lambda:view_folder_content(file)).grid(row=local_site_files.index(file))
 else:
     for file in local_site_files[:5]:
         if local_site_files.index(file) == 4:
             last_indx_file = file[:]
             print('Last file in group: ', last_indx_file)
-        Button(local_site_frame, text=file).grid(row=local_site_files.index(file))
+        Button(local_site_frame, text=file, command=lambda:view_folder_content(file)).grid(row=local_site_files.index(file))
 #empty label to create space between list of local files and buttons
 Label(local_site_frame).grid(row=6)
 if not len(local_site_files) <=5:
