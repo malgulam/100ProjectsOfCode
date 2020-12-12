@@ -75,8 +75,12 @@ def connect(host, username, passwd, port):
     #set the debig level
     ftp.set_debuglevel(2)
     #connect to ftp
-    ftp.connect(host=str(host), port=int(port))
-    print('connected')
+    try:
+        ftp.connect(host=str(host), port=int(port))
+        print('connected')
+    except ConnectionRefusedError:
+        print('Error connecting.Make sure the ftp server is up and running.')
+        print('Try the ftp server that come with https://github.com/malgulam/100ProjectsOfCode/blob/main/ftpclient/ftpclient_simple/ftp_server.py')
     #login
     print('login in.....')
     if username:

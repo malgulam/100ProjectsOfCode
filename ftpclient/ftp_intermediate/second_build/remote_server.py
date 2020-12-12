@@ -120,7 +120,7 @@ class RemoteServer(object):
                     file_image_button.pack()
                     Button(remote_dirs_FRAME, text=f"{self.item}", command=partial(RemoteServer.show_popup_options, self, remote_server_window=remote_server_window, ftpObj=self.ftpObj, type='file', folder=self.folder, filename_or_dirname=self.item)).pack()
         else:
-            Label(remote_dirs_FRAME, text="No directories / files here!")
+            Label(remote_dirs_FRAME, text="No directories / files here!").pack()
     #method to  show popup on button click in the remote_dirs_contents_FRAME
     def show_popup_options(self, remote_server_window, ftpObj, type, folder, filename_or_dirname):
         self.remote_sever_window = remote_server_window
@@ -139,13 +139,18 @@ class RemoteServer(object):
             #create download button
             download_button = Button(popup_window, text="Download", command=lambda: RemoteServer.download(self, ftp_obj=self.ftpObj, path=self.folder, filename_or_dirname=self.filename_or_dirname)).pack()
         else:
-            # create download button
             #todo: create view children function
+            show_sub_dirs_button = Button(popup_window, text="Show Sub-Dirs",
+                                          command=lambda: RemoteServer.show_sub_dirs(self, ftp_obj=self.ftpObj, path=self.folder,
+                                                                                     filename_or_dirname=self.filename_or_dirname)).pack()
+            #todo: create type parameter in RemoteServer.download to enable downloading directories and storing it in device
+            # create download button
             download_button = Button(popup_window, text="Download",
                                      command=lambda: RemoteServer.download(self, ftp_obj=self.ftpObj, path=self.folder,
                                                                            filename_or_dirname=self.filename_or_dirname)).pack()
     #method to download items from remote sevrer
     def download(self, ftp_obj, path, filename_or_dirname, to_path=f'{str(Path.home())}/Desktop'):
+        #todo: append a file dialof window to help users choose where to save their downloads
         self.ftp_obj = ftp_obj
         self.path = path
         self.filename_or_dirname = filename_or_dirname
@@ -158,3 +163,46 @@ class RemoteServer(object):
         retrieved_contents = self.ftp_obj.retrbinary(f'RETR {filename_or_dirname}', handle.write)
         handle.close()
         return
+    #method to show sub dir
+    def show_sub_dirs(self, ftp_obj, path, filename_or_dirname):
+        self.ftp_obj = ftp_obj
+        self.path = path
+        self.filename_or_dirname  = filename_or_dirname
+
+        #change ftp_obj pwd to the path
+        self.ftp_obj.cwd(f'{self.path}')
+
+        #retrieve everything in the self.ftp_obj.pwd()
+        items = self.ftp_obj.nlst()
+        #create sub_dirs_window
+        sub_dirs_window = helpers.newWindow.__int__(self, title=f"Sub-dirs of {filename_or_dirname}",
+                                                         geometry="200x200")
+        # sub_dirs_window = helpers.newWindow(self, title=f"Sub-dirs of {filename_or_dirname}", geometry="200x200")
+        #destroy all widgets present
+        for widget in sub_dirs_window.winfo_children():
+            widget.destroy()
+        #create sub_dirs_frame
+        sub_dirs_frame = LabelFrame(sub_dirs_window)
+
+        #create sub_dirs_frame_canvas
+        sub_dirs_frame_canvas = Canvas(sub_dirs_window)
+
+        #initialise the scrollbar
+        yscrollbar = ttk.Scrollbar(sub_dirs_frame, orient="vertical", command=sub_dirs_frame_canvas.yview)
+        #pack the scrollbar
+        yscrollbar.pack(side=RIGHT, fill="y")
+
+        #activate scrollbar
+        sub_dirs_frame_canvas.configure(yscrollcommand=yscrollbar.set)
+
+        #bind function with sub_dirs_frame_canvas
+        sub_dirs_frame_canvas.bind('<Configure>', lambda e: sub_dirs_frame_canvas.configure(scrollregion=sub_dirs_frame_canvas.bbox("all")))
+
+        #create frame
+        sub_dirs_FRAME = Frame(sub_dirs_frame_canvas)
+        sub_dirs_frame_canvas.create_window((0,0), window=sub_dirs_FRAME, anchor="nw")
+
+
+        #create label on  top of the frame
+        Label(sub_dirs_window, text=f"Sub-dirs of {filename_or_dirname}").pack()
+        sub_dirs_frame.pack(fill="both", expand="yes", padx=10, pady=10)

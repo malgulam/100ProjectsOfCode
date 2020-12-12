@@ -50,7 +50,7 @@ Label(entries_frame, text="Host:").grid(row=0, column=0)
 host_entry = Entry(entries_frame, width=10, borderwidth=2)
 host_entry.grid(row=0, column=1)
 # putting default value  of host in host_entry input
-host_entry.insert(0, "192.168.1.4")
+host_entry.insert(0, "192.168.1.2")
 
 # Creating Label by the username_entry input
 Label(entries_frame, text="Username:").grid(row=0, column=2)
