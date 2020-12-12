@@ -7,10 +7,10 @@ from socket import *
 import random
 
 #Initialising the socket
-sock = socket.socket(AF_INET, SOCK_STREAM)
+sock = socket(AF_INET, SOCK_STREAM)
 
 #assigning the hostname
-host = 'stevenson'
+host = 'hostname_goes_here'
 
 #Assigning a port number to the socket
 #using random number between 8080-9000
@@ -18,6 +18,8 @@ port = random.randint(8080, 9000)
 
 #binding the socket server and address
 sock.bind((host, port))
+
+print(f'Serving socket on Host:{host}\nPort:{port}')
 
 #listen for one connection at a time
 sock.listen(1)
