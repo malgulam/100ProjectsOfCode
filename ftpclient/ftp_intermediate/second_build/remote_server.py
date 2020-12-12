@@ -181,28 +181,33 @@ class RemoteServer(object):
         #destroy all widgets present
         for widget in sub_dirs_window.winfo_children():
             widget.destroy()
-        #create sub_dirs_frame
-        sub_dirs_frame = LabelFrame(sub_dirs_window)
+        wrapper1 = LabelFrame(sub_dirs_window)
+        #wrapper2 = LabelFrame(sub_dirs_window)
 
-        #create sub_dirs_frame_canvas
-        sub_dirs_frame_canvas = Canvas(sub_dirs_window)
+        # create canvas
+        mycanvas = Canvas(wrapper1)
+        mycanvas.pack(side=LEFT, fill="both", expand="yes")
 
-        #initialise the scrollbar
-        yscrollbar = ttk.Scrollbar(sub_dirs_frame, orient="vertical", command=sub_dirs_frame_canvas.yview)
-        #pack the scrollbar
+        # initialise scrollbar
+        yscrollbar = ttk.Scrollbar(wrapper1, orient="vertical", command=mycanvas.yview)
         yscrollbar.pack(side=RIGHT, fill="y")
 
-        #activate scrollbar
-        sub_dirs_frame_canvas.configure(yscrollcommand=yscrollbar.set)
+        # activvate scrollbar
+        mycanvas.configure(yscrollcommand=yscrollbar.set)
 
-        #bind function with sub_dirs_frame_canvas
-        sub_dirs_frame_canvas.bind('<Configure>', lambda e: sub_dirs_frame_canvas.configure(scrollregion=sub_dirs_frame_canvas.bbox("all")))
+        # bind function with mycanvas
+        mycanvas.bind('<Configure>', lambda e: mycanvas.configure(scrollregion=mycanvas.bbox("all")))
 
-        #create frame
-        sub_dirs_FRAME = Frame(sub_dirs_frame_canvas)
-        sub_dirs_frame_canvas.create_window((0,0), window=sub_dirs_FRAME, anchor="nw")
+        # create frame
+        myFrame = Frame(mycanvas)
+        mycanvas.create_window((0, 0), window=myFrame, anchor="nw")
 
+        wrapper1.pack(fill="both", expand="yes", padx=10, pady=10)
+        # wrapper2.pack(fill="both", expand="yes", padx=10, pady=10)
 
-        #create label on  top of the frame
-        Label(sub_dirs_window, text=f"Sub-dirs of {filename_or_dirname}").pack()
-        sub_dirs_frame.pack(fill="both", expand="yes", padx=10, pady=10)
+        if items:
+            for item in items:
+                Button(myFrame, text=f'{item}').pack()
+        else:
+            Label(myFrame, text="no sub-dirs/files").pack()
+

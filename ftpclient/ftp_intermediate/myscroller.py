@@ -9,7 +9,7 @@ wrapper2 = LabelFrame(win)
 
 #create canvas
 mycanvas = Canvas(wrapper1)
-mycanvas.pack(side=LETF, fill="both", expand="both")
+mycanvas.pack(side=LEFT, fill="both", expand="both")
 
 #initialise scrollbar
 yscrollbar = ttk.Scrollbar(wrapper1, orient="vertical", command=mycanvas.yview)
