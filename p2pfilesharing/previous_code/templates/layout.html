@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    {block head}{%endblock%}
+    {%block head%}{%endblock%}
 </head>
 <body>
 <nav>
     <h1 class="alert alert-primary">P2P Program</h1>
+    <a href="/register">Register</a>
 </nav>
+{% block body %}{% endblock %}
 </body>
 </html>
