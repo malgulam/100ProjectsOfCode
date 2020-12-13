@@ -21,7 +21,7 @@ General Web projects, from building a simple website to building tools for compl
   - [x] [Web Scraper](#web-scraper)
   - [x] [Port Scanner](#port-scanner)
   - [x] [Packet Sniffer](#packet-sniffer)
-  - [ ] [P2P File Sharing](#p2p-file-sharing)
+  - [x] [P2P File Sharing](#p2p-file-sharing)
   - [ ] [Web Search Engine](#search-engine)
   - [ ] [Bandwidth Monitor](#bandwidth-monitor)
   - [ ] [Product Landing Page](#product-landing-page)
