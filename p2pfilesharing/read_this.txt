@@ -1,0 +1,2 @@
+This is a flask web app that makes use of dbs, jquery and basic html/css/jquery to connect 
+two users who wish to send messages and files via internet!

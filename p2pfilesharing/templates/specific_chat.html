@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ specific_chat_user }}
+{% endblock %}
+
+{% block body %}
+<header class="alert alert-primary"><h3>Chat with {{ specific_chat_user }}</h3></header>
+<div class="container">
+</div>
+
+<div>
+    <form>
+        <input type="text" placeholder="message" name="message" id="message">
+        <input type="submit" class="btn btn-primary" value="send">
+    </form>
+</div>
+{% endblock %}

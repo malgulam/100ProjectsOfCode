@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Users Found
+{% endblock %}
+
+{% block body %}
+{% if users_found %}
+    <a href="/specific_chat{{ users_found[0] }}">{{ users_found[0] }}</a>
+{% else %}
+    <h4>No users found!</h4>
+{% endif %}
+{% endblock %}

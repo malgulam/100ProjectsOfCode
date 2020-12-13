@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<div class="container" style="border: 1px solid white;gravity:center;align:center;padding-top:100px;">
+    <form action="login" method="post">
+        <input type="text" placeholder="Username" name="username" id="username">
+        <br>
+        <input type="password" placeholder="Password" name="password" id="password">
+        <input type="submit" class="btn btn-primary" value="login">
+    </form>
+</div>
+{% endblock %}

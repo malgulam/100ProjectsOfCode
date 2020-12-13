@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Messaging
+{% endblock %}
+
+{% block body %}
+<div>
+    <form class="search" action="usersfound" method="post">
+        <input type="text" placeholder="Search for users..." name="searchcontent" id="searchcontent">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+{% endblock %}
