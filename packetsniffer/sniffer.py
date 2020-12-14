@@ -24,7 +24,7 @@ if 'linux' or 'x' in platform_:
         print(f'DESTINATION MAC: {binascii.hexlify(eth_header[0])} Source MAC:{binascii.hexlify(eth_header[1])} TYPE: {binascii.hexlify(eth_header[2])}')
         ipheader = packet[0][14:34]
         ip_header = struct.unpack("!12s4s4s", ipheader)
-        print(f'SOURCE UP:{socket.inet_ntoa(ip_header[1])} DESTINATION IP:{socket.inet_ntoa(ip_header[2])}')
+        print(f'SOURCE IP:{socket.inet_ntoa(ip_header[1])} DESTINATION IP:{socket.inet_ntoa(ip_header[2])}')
 elif 'windows' or 'win' in platform:
     s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.htons(0x0800))
     #recvfrom to receive packets...using 2048(from tutorials(seems to be the best guess!))
@@ -37,6 +37,6 @@ elif 'windows' or 'win' in platform:
         print(f'DESTINATION MAC: {binascii.hexlify(eth_header[0])} Source MAC:{binascii.hexlify(eth_header[1])} TYPE: {binascii.hexlify(eth_header[2])}')
         ipheader = packet[0][14:34]
         ip_header = struct.unpack("!12s4s4s", ipheader)
-        print(f'SOURCE UP:{socket.inet_ntoa(ip_header[1])} DESTINATION IP:{socket.inet_ntoa(ip_header[2])}')
+        print(f'SOURCE IP:{socket.inet_ntoa(ip_header[1])} DESTINATION IP:{socket.inet_ntoa(ip_header[2])}')
 else:
     print('Unknown platform!Modify script!')

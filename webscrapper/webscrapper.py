@@ -40,6 +40,7 @@ base_url = 'https://www.google.com/search?q='
 keyword_  = input(str('What keyword are you scrapping\n=>'))
 print('Starting scrape')
 resp = requests.get(f'{base_url}{keyword_}')
+
 soup = bs(resp.content, 'html.parser')
 results = soup.body.find_all(string=re.compile(f'.*{keyword_}.*'), recursive=True)
 if results:

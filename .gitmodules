@@ -1,0 +1,3 @@
+[submodule "searchengine/pisearch"]
+	path = searchengine/pisearch
+	url = https://github.com/malimba/pisearch
