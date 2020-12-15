@@ -1,4 +1,4 @@
-#this project is modified by an original project authored by:
+#this project is modified by an original project authored by:https://github.com/N3ROO
 #and modified by: malimba
 
 import psutil
