@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+just water
+{% endblock %}
+
+{% block head %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@100&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="jquery-ui.min.js"></script>
+{% endblock  %}
+
+{% block body %}
+<div id="main-banner" style="text-align:center;gravity:center;font-family: 'Big Shoulders Inline Text', cursive;">Just Water</div>
+<div class="main_content_advertisement" style="text-align:center;gravity:center;font-family: 'Big Shoulders Inline Text', cursive;"><h1>Just Water.Refreshing and Wholesome!</h1></div>
+<div class="main_content_advertisement" style="text-align:center;gravity:center;font-family: 'Big Shoulders Inline Text', cursive;"><img src="{{ url_for('static', filename='/images/water-bottle-image.jpeg') }}"> </div>
+<div class="ending_content_advertisement" style="text-align:center;gravity:center;font-family: 'Big Shoulders Inline Text', cursive;float:left;overflow:hidden;"><h4>...give it a try!</h4></div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#main-banner').slideDown(2000, "linear", function(){
+	  $(this).css("background", "#264cff")
+	});
+    });
+$(document).ready(function(){
+   /*fades in page on load*/
+   $('.main_content_advertisement').css('display', 'none');
+   $('.main_content_advertisement').fadeIn(3000);
+});
+$(document).ready(function(){
+    /* slide right */
+    $(".ending_content_advertisement").toggle("slide", {direction: "right"}, 3000);
+});
+</script>
+{% endblock %}

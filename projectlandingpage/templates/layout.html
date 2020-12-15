@@ -1,0 +1,11 @@
+<!--doctype html-->
+<html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{% block title %}{% endblock %}</title>
+  {% block head %}{% endblock %}
+
+  <body style="background-image:url({{ url_for('static', filename='/images/background1.jpeg') }});">
+    {% block body %}{% endblock %}
+  </body>
+</html>

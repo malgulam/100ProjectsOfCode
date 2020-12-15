@@ -1,0 +1,18 @@
+#slide-one{
+display:none;
+padding:auto;
+font-size:5em;
+width:80%;
+padding: 2%;
+color: white;
+background: grey;
+text-align: center;
+gravity: center;
+}
+
+.fade {
+  margin: 50px;
+  padding: 50px;
+  background-color: lightgreen;
+  opacity: 1;
+}
