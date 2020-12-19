@@ -1,0 +1,5 @@
+the urls are as follows:
+
+http://localhost:8080/login => login view
+http://localhost:8080/signup => signup view
+http://localhost:8080/blog_view => view blog_contents

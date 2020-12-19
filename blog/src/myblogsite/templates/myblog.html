@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+THE BLOG: Official site
+{% endblock %}
+
+{% block head_links %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block body %}
+    {% if blog_content %}
+    <header class="alert alert-primary"><h1>Blog Posts</h1></header>
+    <ul>
+        {% for content_item in blog_content %}
+        <li class="container">{{ content_item }}</li>
+    </ul>
+        {% endfor %}
+    {% else %}
+        <header class="alert alert-primary"><h1>No blog posts</h1></header>
+    {% endif %}
+{% endblock %}

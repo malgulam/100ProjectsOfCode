@@ -18,11 +18,12 @@ from django.urls import path, include
 from django.conf.urls import url
 import sys
 sys.path.append('..')
-from blog.views import home_view, signup, login
+from blog.views import home_view, signup, login, blog_view
 
 urlpatterns = [
     path('', home_view, name='home'),
     url(r'^signup/$', signup, name='signup'),
     url(f'^login$', login, name='login'),
+    url(f'^blog_view/$', blog_view, name="blog_view"),
     path('admin/', admin.site.urls),
 ]
