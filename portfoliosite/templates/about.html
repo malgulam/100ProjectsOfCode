@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block meta_tags %}
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <meta content="description" name="description" />
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author" />
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no" />
+{% endblock %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block head_links %}
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="{{ url_for('static', filename='assets/apple-icon-180x180.png') }}" />
+  <link href="{{ url_for('static', filename='assets/favicon.ico') }}" rel="icon" />
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+{% endblock %}
+
+{% block body %}
+<body class="">
+  <div id="site-border-left"></div>
+  <div id="site-border-right"></div>
+  <div id="site-border-top"></div>
+  <div id="site-border-bottom"></div>
+  <!-- Add your content of header -->
+  <header>
+    <nav class="navbar  navbar-fixed-top navbar-default">
+      <div class="container">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav ">
+           <li><a href="/" title="">01 : Home</a></li>
+            <li><a href="/works" title="">02 : Works</a></li>
+            <li><a href="/about" title="">03 : About me</a></li>
+            <li><a href="/contact" title="">04 : Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="section-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="section-container-spacer text-center">
+            <h1 class="h2">03 : About me</h1>
+          </div>
+
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-xs-12 col-md-6">
+                  <h3>Hi there!</h3>
+                  <p>
+                    I'm malimba.I'm a high school student.I watch rick and morty...
+                  </p>
+                  <h3>What languages do you speak?</h3>
+                  <p>
+                    I speak Python, some javascript.I hope you can C what I am doing here.
+                      Trying to stay awake?>Take some mocha Java.Know I will.
+                  </p>
+
+                  <h3>Where did you learn software development?</h3>
+                  <p>
+                    Short answer: Google <br />
+                  </p>
+                </div>
+                <div class="col-xs-12 col-md-5" style="padding: 40px;">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/portfolio-flask.appspot.com/o/profil.jpg?alt=media&token=72b30c0f-3083-4391-889c-f0beed5a901c"
+                    class="img-responsive" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+      navActivePage();
+    });
+  </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+{% endblock %}

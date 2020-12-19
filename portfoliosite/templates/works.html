@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block meta_tags %}
+<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="description" name="description" />
+    <meta name="google" content="notranslate" />
+    <meta
+      content="Mashup templates have been developped by Orson.io team"
+      name="author"
+    />
+     <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no" />
+
+{% endblock %}
+
+{% block title %}Works{% endblock %}
+
+{% block head_links %}
+<link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ url_for('static', filename='assets/apple-icon-180x180.png') }}"
+    />
+    <link
+      href="{{ url_for('static', filename='assets/favicon.ico') }}"
+      rel="icon"
+    />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+{% endblock %}
+
+{% block body %}
+<body class="">
+    <div id="site-border-left"></div>
+    <div id="site-border-right"></div>
+    <div id="site-border-top"></div>
+    <div id="site-border-bottom"></div>
+    <!-- Add your content of header -->
+    <header>
+      <nav class="navbar  navbar-fixed-top navbar-default">
+        <div class="container">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar-collapse"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav ">
+              <li><a href="/" title="">01 : Home</a></li>
+              <li><a href="/works" title="">02 : Works</a></li>
+              <li><a href="/about" title="">03 : About me</a></li>
+              <li><a href="/contact" title="">04 : Contact</a></li>
+            </ul>
+
+            <ul
+              class="nav navbar-nav navbar-right navbar-small visible-md visible-lg"
+            >
+              <li><a href="./index.html" title="" class="active">001</a></li>
+              <li><a href="./index.html" title="">002</a></li>
+              <li><a href="./index.html" title="">003</a></li>
+              <li><a href="./index.html" title="">004</a></li>
+              <li><a href="./index.html" title="">005</a></li>
+              <li><a href="./index.html" title="">006</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="section-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <img
+              src="static/assets/images/work001-01.jpg"
+              class="img-responsive"
+              alt=""
+            />
+            <div class="card-container">
+              <div class="text-center">
+                <h1 class="h2">001 : python-teams</h1>
+              </div>
+              <p>
+                About: Pythonic Implementation Of Collaborative Software.
+                Reason For Creation:  After using many collaborative platforms such as repl.it, Microsoft Teams, etc, I realised they all involved the same things.
+
+                                      Creation of an account
+                                      Creation of teams with other users
+                                      Shared code bases
+                                      Features that help users program together, text each other, set deadlines, update calendars, etc.
+                                      I therefore used some basic python3 and flask to write this program which seeks to implement all these features soon.It has basic functionality up and running and is open for contribution.
+
+                Link:  https://github.com/malimba/python-teams.
+              </p>
+
+              <blockquote>
+                <p>
+                  "code is the de-facto."
+                </p>
+                <small class="pull-right">malimba</small>
+              </blockquote>
+            </div>
+          </div><div class="card-container">
+              <div class="text-center">
+                <h1 class="h2">002 : pisearch</h1>
+              </div>
+              <p>
+                About: Search google using python!
+                Reason For Creation:  Search google using python!
+                                       will be optimized to be ai based later
+
+                Link:  https://github.com/malimba/pisearch.
+              </p>
+            </div>
+          </div>
+      </div>
+        <div class="card-container">
+              <div class="text-center">
+                <h1 class="h2">003 : 100ProjectsOfCode</h1>
+              </div>
+              <p>
+                About: Completing 100ProjectsOfCode by https://github.com/aceking007/100ProjectsOfCode.git
+                Reason For Creation:  A list of practical knowledge-building projects. As the projects are aimed to increase your knowledge base, they are somewhat challenging. However, there are a few easy ones too. Many of them are even worthy enough to showcase on your portfolio. The projects are divided into multiple categories and tagged with some suggested languages and frameworks/tools (I'm still working on this part) to get you started.
+                Link:  https://github.com/malgulam/100ProjectsOfCode.git
+              </p>
+            </div>
+          </div>
+    <div class="card-container">
+              <div class="text-center">
+                <h1 class="h2">004 : py_git</h1>
+              </div>
+              <p>
+                About: Python Git-like VC Tool For Pythonic Git Actions.
+                Reason For Creation:  Essentially: Pythonically Git
+                                      PyGit is a python package / module that helps developers get the best out of Git, quickly and effeciently.
+                Link:  https://github.com/malgulam/py_git.git
+              </p>
+            </div>
+          </div>
+
+
+    <footer class="footer-container text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <p>
+              © UNTITLED | Website created with
+              <a
+                href="http://www.mashup-template.com/"
+                title="Create website with free html template"
+                >Mashup Template</a
+              >/<a
+                href="https://www.unsplash.com/"
+                title="Beautiful Free Images"
+                >Unsplash</a
+              >
+            </p>
+              <p>~malimba</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        navActivePage();
+      });
+    </script>
+
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='main.js') }}"
+    ></script>
+{% endblock %}
