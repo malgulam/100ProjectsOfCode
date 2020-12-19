@@ -27,7 +27,7 @@ General Web projects, from building a simple website to building tools for compl
   - [x] [Product Landing Page](#product-landing-page)
   - [x] [Create Your Own Blog](#blog)
   - [x] [Your Portfolio Website](#portfolio-website)
-  - [ ] [Animated Navigation Toggle](#animated-navigation-toggle)
+  - [x] [Animated Navigation Toggle](#animated-navigation-toggle)
   - [ ] [Country Lookup using IP address](#country-lookup-using-ip-address)
 ### Bots  
 Building automated bots is something you really want to try out at some point in your career/life.  
