@@ -26,7 +26,7 @@ General Web projects, from building a simple website to building tools for compl
   - [x] [Bandwidth Monitor](#bandwidth-monitor)
   - [x] [Product Landing Page](#product-landing-page)
   - [x] [Create Your Own Blog](#blog)
-  - [ ] [Your Portfolio Website](#portfolio-website)
+  - [x] [Your Portfolio Website](#portfolio-website)
   - [ ] [Animated Navigation Toggle](#animated-navigation-toggle)
   - [ ] [Country Lookup using IP address](#country-lookup-using-ip-address)
 ### Bots  
