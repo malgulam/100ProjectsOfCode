@@ -31,7 +31,7 @@ General Web projects, from building a simple website to building tools for compl
   - [x] [Country Lookup using IP address](#country-lookup-using-ip-address)
 ### Bots  
 Building automated bots is something you really want to try out at some point in your career/life.  
-  - [ ] [Chatbot](#chatbot)
+  - [x] [Chatbot](#chatbot)
   - [ ] [Slack Bot](#slack-bot)
   - [ ] [Twitter Bot](#twitter-bot)
   - [ ] [Messenger Bot](#messenger-bot)
