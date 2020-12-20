@@ -33,7 +33,7 @@ General Web projects, from building a simple website to building tools for compl
 Building automated bots is something you really want to try out at some point in your career/life.  
   - [x] [Chatbot](#chatbot)
   - [x] [Slack Bot](#slack-bot)
-  - [ ] [Twitter Bot](#twitter-bot)
+  - [x] [Twitter Bot](#twitter-bot)
   - [ ] [Messenger Bot](#messenger-bot)
   - [ ] [WhatsApp Butler](#whatsapp-butler)
 ### Software & Apps  
