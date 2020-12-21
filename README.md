@@ -34,7 +34,7 @@ Building automated bots is something you really want to try out at some point in
   - [x] [Chatbot](#chatbot)
   - [x] [Slack Bot](#slack-bot)
   - [x] [Twitter Bot](#twitter-bot)
-  - [ ] [Messenger Bot](#messenger-bot)
+  - [x] [Messenger Bot](#messenger-bot)
   - [ ] [WhatsApp Butler](#whatsapp-butler)
 ### Software & Apps  
 Proper software or application suggestions that you may even end up using in your daily life, like a simple text editor or a custom music player.  
