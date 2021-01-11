@@ -1,3 +1,6 @@
 [submodule "searchengine/pisearch"]
 	path = searchengine/pisearch
 	url = https://github.com/malimba/pisearch
+[submodule "quizapp/quizapp/Quiz-html-druzgeorge-"]
+	path = quizapp/quizapp/Quiz-html-druzgeorge-
+	url = https://github.com/malimba/Quiz-html-druzgeorge-

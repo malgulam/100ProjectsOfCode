@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/quizapp/quizapp/Quiz-html-druzgeorge-" vcs="" />
+    <mapping directory="$PROJECT_DIR$/searchengine/pisearch" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/whatsappbot/whatsapp-framework" vcs="Git" />
   </component>
 </project>

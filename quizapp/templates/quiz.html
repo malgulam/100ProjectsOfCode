@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Quiz
+{% endblock %}
+
+{% block js %}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var score = 0;
+    function score_keep(chosen_answer_btn, correct_answer){
+        var chosen_answer = chosen_answer_btn.value;
+        console.log(chosen_answer, correct_answer);
+        if (chosen_answer === correct_answer){
+            score = score +1;
+            document.getElementById("score").innerHTML = score;
+            return;
+        }
+        else{console.log('not answer');return;}
+    }
+
+    function printer_me(btn){
+        console.log(btn.value);
+    }
+</script>
+{% endblock %}
+
+{% block body %}
+    <h1>Score:</h1>
+    <div style="border:3px solid black;height:100px;width:100px;">
+        <p id="score" style="font-size:32px;text-align:center;padding-top:25%;padding-bottom:25%;">0</p>
+    </div>
+    <div>
+    {% if questions_answers_dict %}
+        <h1>QUIZ:</h1>
+        {% for question_dict in questions_answers_dict %}
+            <div class="container" style="padding-top:20px;padding-bottom:20px;">
+                <h4><b>Question: </b>{{questions_answers_dict[question_dict]['question']}}</h4>
+                {% for answer in questions_answers_dict[question_dict]['answers'] %}
+                <h4><em>{{ answer[:8] }}:</em><button id="{{question_dict}}_{{answer[:8]}}" value="{{ answer[:8] }}" onclick="score_keep(this, '{{questions_answers_dict[question_dict]['correct_answer']}}')">{{questions_answers_dict[question_dict]['answers'][answer]}}</button></h4>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1 class="alert alert-warning">Nothing here</h1>
+    {% endif %}
+    </div>
+{% endblock %}

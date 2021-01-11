@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<header class="alert alert-primary">This is a quiz created by https://github.com/malimba with the use of quizapi.io's API.Start now!</header>
+<form method="get" action="start_quiz">
+    <input type="submit" value="Start" class="btn btn-primary">
+</form>
+{% endblock %}
