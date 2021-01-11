@@ -38,7 +38,7 @@ Building automated bots is something you really want to try out at some point in
   - [x] [WhatsApp Butler](#whatsapp-butler)
 ### Software & Apps  
 Proper software or application suggestions that you may even end up using in your daily life, like a simple text editor or a custom music player.  
-  - [ ] [Quiz App](#quiz-app)
+  - [x] [Quiz App](#quiz-app)
   - [ ] [Firewall](#firewall)
   - [ ] [ToDo List](#todo-list)
   - [ ] [Text Editor](#text-editor)
